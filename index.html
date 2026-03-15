@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Saim & Nafisa</title>
+
+<style>
+
+body{
+margin:0;
+font-family: 'Segoe UI', sans-serif;
+background: linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);
+color:white;
+text-align:center;
+overflow-x:hidden;
+}
+
+h1{
+margin-top:80px;
+font-size:50px;
+letter-spacing:3px;
+}
+
+.section{
+padding:80px 20px;
+}
+
+#counter{
+font-size:24px;
+margin-top:20px;
+opacity:0.9;
+}
+
+button{
+padding:12px 28px;
+border:none;
+border-radius:30px;
+background:#ff4d6d;
+color:white;
+font-size:16px;
+cursor:pointer;
+margin-top:20px;
+}
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+width:90%;
+margin:auto;
+padding-bottom:80px;
+}
+
+.photo-card{
+position:relative;
+}
+
+.gallery img{
+width:100%;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.6);
+transition:0.4s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+.gallery img{
+  position:relative;
+  z-index:1;
+}
+.quote{
+    position:absolute;
+    bottom:8px;
+    left:8px;
+    right:8px;
+    color:white;
+    font-size:16px;
+    text-align:center;
+    text-shadow:0 0 10px rgba(0,0,0,0.8);
+    background:rgba(0,0,0,0.35);
+    padding:6px 10px;
+    border-radius:8px;
+}
+.viewer{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.95);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:1000;
+}
+
+.viewer img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+}
+
+.close{
+position:absolute;
+top:30px;
+right:40px;
+font-size:40px;
+cursor:pointer;
+color:white;
+}
+.video-section{
+padding:80px 20px;
+}
+
+.videos{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+width:90%;
+margin:auto;
+}
+
+video{
+width:100%;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.6);
+}
+.stars{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+pointer-events:none;
+z-index:-1;
+}
+
+.star{
+position:absolute;
+background:white;
+border-radius:50%;
+animation:twinkle 3s infinite alternate;
+}
+
+@keyframes twinkle{
+from{opacity:0.2;}
+to{opacity:1;}
+}
+.heart{
+position:fixed;
+width:15px;
+height:15px;
+background:red;
+transform:rotate(45deg);
+left:50%;
+top:50%;
+opacity:0.8;
+animation:floatHeart 6s linear infinite;
+z-index:-1;
+}
+
+.heart:before,
+.heart:after{
+content:"";
+position:absolute;
+width:15px;
+height:15px;
+background:red;
+border-radius:50%;
+}
+
+.heart:before{
+top:-7.5px;
+left:0;
+}
+
+.heart:after{
+left:-7.5px;
+top:0;
+}
+
+@keyframes floatHeart{
+0%{transform:translateY(0) rotate(45deg);opacity:0.8;}
+50%{opacity:0.6;}
+100%{transform:translateY(-600px) rotate(45deg);opacity:0;}
+}
+@keyframes floatQuote{
+  0%{ transform: translateY(0px); }
+  50%{ transform: translateY(-10px); }
+  100%{ transform: translateY(0px); }
+}
+.subtitle{
+  font-size:20px;
+  margin-top:-10px;
+  margin-bottom:20px;
+  color:#ddd;
+  font-style:italic;
+  letter-spacing:1px;
+}
+.hero{
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeIn 2.5s ease forwards;
+}
+
+@keyframes fadeIn{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+h1{
+  font-size:52px;
+  text-shadow:0 0 20px rgba(255,255,255,0.4);
+}
+</style>
+
+</head>
+
+<body>
+<div class="stars" id="stars"></div>
+<div id="hearts"></div>
+  <div class="section">
+
+<div class="hero">
+  <h1>Saim ❤️ Nafisa</h1>
+  <p class="subtitle">“A little universe where our memories live.”</p>
+</div>
+<div id="counter"></div>
+
+<button onclick="playMusic()">Play Our Song</button>
+
+<audio id="music" loop>
+<source src="music/music.mp3" type="audio/mpeg">
+</audio>
+
+</div>
+<div class="gallery" id="gallery"></div>
+<div class="viewer" id="viewer">
+<span class="close" onclick="closeViewer()">×</span>
+<img id="viewerImg">
+</div>
+<div class="video-section">
+
+<h2>Our Special Moments</h2>
+
+<div class="videos">
+
+<video controls>
+<source src="videos/video1.mp4" type="video/mp4">
+</video>
+
+<video controls>
+<source src="videos/video2.mp4" type="video/mp4">
+</video>
+
+<video controls>
+<source src="videos/video3.mp4" type="video/mp4">
+</video>
+
+<video controls>
+<source src="videos/video4.mp4" type="video/mp4">
+</video>
+
+<video controls>
+<source src="videos/video5.mp4" type="video/mp4">
+</video>
+
+</div>
+
+</div> 
+
+  <script>
+
+const startDate = new Date("2023-09-07")
+
+function updateCounter(){
+
+const now = new Date()
+
+const diff = now - startDate
+
+const days = Math.floor(diff/(1000*60*60*24))
+
+const hours = Math.floor(diff/(1000*60*60)) % 24
+
+const minutes = Math.floor(diff/(1000*60)) % 60
+
+document.getElementById("counter").innerHTML =
+"We have been together for <b>" +
+days + " days " +
+hours + " hours " +
+minutes + " minutes ❤️"
+
+}
+
+setInterval(updateCounter,1000)
+
+updateCounter()
+
+function playMusic(){
+
+document.getElementById("music").play()
+
+}
+const quotes = [
+"I love you, and that's the beginning and end of everything.",
+"I'm not perfect, but I'm perfect for you.",
+"There are darknesses in life, and there are lights, and you are one of the lights.",
+"I can bear pain myself, but I couldn't bear yours.",
+"Everything is better with you, Everything has been better since you.",
+"Between seas, galaxies and moons, I was lucky to step on the same land as you.",
+"And I will meet you where the sky ends. Where the eternity begins.",
+"You return like autumn...and I fall all the time.",
+"I find you in every song I listen to.",
+"The moon in me finds the sky in you.",
+"Damn, your eyes.",
+"And in the middle of my chaos there was you.",
+"I write, because you exist.",
+"There was forever in those eyes.",
+"Meet me where the falling stars live.",
+"But there is never a day I stop loving you.",
+"Between a dream and a dream.",
+"For me there is only you."
+];
+
+let photos = []
+
+for(let i=1;i<=82;i++){
+photos.push("photos/photo"+i+".jpg")
+}
+
+photos.sort(()=>Math.random()-0.5)
+
+quotes.sort(()=>Math.random()-0.5)
+
+const gallery=document.getElementById("gallery")
+
+photos.forEach((photo,i)=>{
+
+const card=document.createElement("div")
+card.className="photo-card"
+
+const img=document.createElement("img")
+img.src=photo
+img.onclick=()=>openViewer(photo)
+const quote=document.createElement("div")
+quote.className="quote"
+quote.innerText=quotes[i % quotes.length]
+
+card.appendChild(img)
+card.appendChild(quote)
+
+gallery.appendChild(card)
+
+})
+const viewer=document.getElementById("viewer")
+const viewerImg=document.getElementById("viewerImg")
+
+function openViewer(src){
+viewer.style.display="flex"
+viewerImg.src=src
+}
+
+function closeViewer(){
+viewer.style.display="none"
+}
+const heartsContainer=document.getElementById("hearts")
+
+function createHeart(){
+const heart=document.createElement("div")
+heart.className="heart"
+heart.style.left=Math.random()*100+"%"
+heart.style.width=10+Math.random()*10+"px"
+heart.style.height=heart.style.width
+heart.style.animationDuration=4+Math.random()*4+"s"
+heartsContainer.appendChild(heart)
+setTimeout(()=>heartsContainer.removeChild(heart),8000)
+}
+
+setInterval(createHeart,600)
+const starsContainer = document.getElementById("stars");
+
+for (let i = 0; i < 120; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.width = Math.random() * 3 + "px";
+    star.style.height = star.style.width;
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.animationDelay = Math.random() * 3 + "s";
+    starsContainer.appendChild(star);
+}
+  </script>
+<div class="section">
+<h2>Forever and Always ❤️</h2>
+<p>Thank you for being my everything, Nafisa. Every moment with you is magic.</p>
+</div>
+</body>
+</html>
