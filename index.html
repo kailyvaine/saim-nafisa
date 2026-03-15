@@ -140,13 +140,52 @@ animation:twinkle 3s infinite alternate;
 from{opacity:0.2;}
 to{opacity:1;}
 }
+.heart{
+position:fixed;
+width:15px;
+height:15px;
+background:red;
+transform:rotate(45deg);
+left:50%;
+top:50%;
+opacity:0.8;
+animation:floatHeart 6s linear infinite;
+z-index:-1;
+}
+
+.heart:before,
+.heart:after{
+content:"";
+position:absolute;
+width:15px;
+height:15px;
+background:red;
+border-radius:50%;
+}
+
+.heart:before{
+top:-7.5px;
+left:0;
+}
+
+.heart:after{
+left:-7.5px;
+top:0;
+}
+
+@keyframes floatHeart{
+0%{transform:translateY(0) rotate(45deg);opacity:0.8;}
+50%{opacity:0.6;}
+100%{transform:translateY(-600px) rotate(45deg);opacity:0;}
+}
 </style>
 
 </head>
 
 <body>
 <div class="stars" id="stars"></div>
-<div class="section">
+<div id="hearts"></div>
+  <div class="section">
 
 <h1>Saim ❤️ Nafisa</h1>
 
@@ -307,7 +346,24 @@ viewerImg.src=src
 function closeViewer(){
 viewer.style.display="none"
 }
-  </script>
+const heartsContainer=document.getElementById("hearts")
 
+function createHeart(){
+const heart=document.createElement("div")
+heart.className="heart"
+heart.style.left=Math.random()*100+"%"
+heart.style.width=10+Math.random()*10+"px"
+heart.style.height=heart.style.width
+heart.style.animationDuration=4+Math.random()*4+"s"
+heartsContainer.appendChild(heart)
+setTimeout(()=>heartsContainer.removeChild(heart),8000)
+}
+
+setInterval(createHeart,600)
+  </script>
+<div class="section">
+<h2>Forever and Always ❤️</h2>
+<p>Thank you for being my everything, Nafisa. Every moment with you is magic.</p>
+</div>
 </body>
 </html>
