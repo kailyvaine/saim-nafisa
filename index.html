@@ -185,6 +185,30 @@ top:0;
   50%{ transform: translateY(-10px); }
   100%{ transform: translateY(0px); }
 }
+.subtitle{
+  font-size:20px;
+  margin-top:-10px;
+  margin-bottom:20px;
+  color:#ddd;
+  font-style:italic;
+  letter-spacing:1px;
+}
+.hero{
+  opacity:0;
+  transform:translateY(20px);
+  animation:fadeIn 2.5s ease forwards;
+}
+
+@keyframes fadeIn{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+h1{
+  font-size:52px;
+  text-shadow:0 0 20px rgba(255,255,255,0.4);
+}
 </style>
 
 </head>
@@ -194,8 +218,10 @@ top:0;
 <div id="hearts"></div>
   <div class="section">
 
-<h1>Saim ❤️ Nafisa</h1>
-
+<div class="hero">
+  <h1>Saim ❤️ Nafisa</h1>
+  <p class="subtitle">Our memories, scattered like stars.</p>
+</div>
 <div id="counter"></div>
 
 <button onclick="playMusic()">Play Our Song</button>
