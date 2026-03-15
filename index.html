@@ -50,36 +50,43 @@ margin:auto;
 padding-bottom:80px;
 }
 
-.photo-card{
-position:relative;
+.photo-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border-radius: 15px;
+    overflow: hidden;
+    background: #16213e; /* Matches your theme background */
 }
 
-.gallery img{
-width:100%;
-border-radius:15px;
-box-shadow:0 10px 25px rgba(0,0,0,0.6);
-transition:0.4s;
+.gallery img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 15px 15px 0 0; /* Rounds only the top corners */
+    transition: 0.4s;
+    cursor: pointer;
 }
 
-.gallery img:hover{
-transform:scale(1.05);
-}
-.gallery img{
-  position:relative;
-  z-index:1;
-}
-.quote{
-    position:absolute;
-    bottom:8px;
-    left:8px;
-    right:8px;
-    color:white;
-    font-size:16px;
-    text-align:center;
-    text-shadow:0 0 10px rgba(0,0,0,0.8);
-    background:rgba(0,0,0,0.35);
-    padding:6px 10px;
-    border-radius:8px;
+.quote {
+    /* Changed to relative to stick naturally below the image pixels */
+    position: relative; 
+    margin-top: -60px; /* Pulls the quote UP to overlay the bottom of the image */
+    margin-bottom: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    
+    /* Styling to match your reference photo */
+    width: 85%;
+    background: rgba(0, 0, 0, 0.6); 
+    backdrop-filter: blur(8px);
+    color: white;
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 14px;
+    text-align: center;
+    z-index: 2;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
 }
 .viewer{
 position:fixed;
@@ -288,9 +295,9 @@ const minutes = Math.floor(diff/(1000*60)) % 60
 
 document.getElementById("counter").innerHTML =
 "We have been together for <b>" +
-days + " days " +
-hours + " hours " +
-minutes + " minutes ❤️"
+days + " days, " +
+hours + " hours, and " +
+minutes + " minutes ❤️</b>";
 
 }
 
@@ -368,14 +375,13 @@ viewer.style.display="none"
 const heartsContainer=document.getElementById("hearts")
 
 function createHeart(){
-const heart=document.createElement("div")
-heart.className="heart"
-heart.style.left=Math.random()*100+"%"
-heart.style.width=10+Math.random()*10+"px"
-heart.style.height=heart.style.width
-heart.style.animationDuration=4+Math.random()*4+"s"
-heartsContainer.appendChild(heart)
-setTimeout(()=>heartsContainer.removeChild(heart),8000)
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.style.left = Math.random() * 100 + "%";
+  // Removed the width/height overrides here so the CSS shapes stay intact
+  heart.style.animationDuration = 4 + Math.random() * 4 + "s";
+  heartsContainer.appendChild(heart);
+  setTimeout(() => heartsContainer.removeChild(heart), 8000);
 }
 
 setInterval(createHeart,600)
