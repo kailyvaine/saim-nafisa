@@ -232,25 +232,7 @@ top:0;
 </div>
 
 </div> 
-const starsContainer=document.getElementById("stars")
 
-for(let i=0;i<120;i++){
-
-const star=document.createElement("div")
-
-star.className="star"
-
-star.style.width=Math.random()*3+"px"
-star.style.height=star.style.width
-
-star.style.left=Math.random()*100+"%"
-star.style.top=Math.random()*100+"%"
-
-star.style.animationDelay=Math.random()*3+"s"
-
-starsContainer.appendChild(star)
-
-}
   <script>
 
 const startDate = new Date("2023-09-07")
@@ -360,6 +342,18 @@ setTimeout(()=>heartsContainer.removeChild(heart),8000)
 }
 
 setInterval(createHeart,600)
+const starsContainer = document.getElementById("stars");
+
+for (let i = 0; i < 120; i++) {
+    const star = document.createElement("div");
+    star.className = "star";
+    star.style.width = Math.random() * 3 + "px";
+    star.style.height = star.style.width;
+    star.style.left = Math.random() * 100 + "%";
+    star.style.top = Math.random() * 100 + "%";
+    star.style.animationDelay = Math.random() * 3 + "s";
+    starsContainer.appendChild(star);
+}
   </script>
 <div class="section">
 <h2>Forever and Always ❤️</h2>
