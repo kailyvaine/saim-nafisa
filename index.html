@@ -75,6 +75,33 @@ padding:10px;
 border-radius:10px;
 font-size:14px;
 }
+.viewer{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.95);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:1000;
+}
+
+.viewer img{
+max-width:90%;
+max-height:90%;
+border-radius:10px;
+}
+
+.close{
+position:absolute;
+top:30px;
+right:40px;
+font-size:40px;
+cursor:pointer;
+color:white;
+}
 </style>
 
 </head>
@@ -95,7 +122,11 @@ font-size:14px;
 
 </div>
 <div class="gallery" id="gallery"></div>
-<script>
+<div class="viewer" id="viewer">
+<span class="close" onclick="closeViewer()">×</span>
+<img id="viewerImg">
+</div>
+  <script>
 
 const startDate = new Date("2023-09-07")
 
@@ -168,7 +199,7 @@ card.className="photo-card"
 
 const img=document.createElement("img")
 img.src=photo
-
+img.onclick=()=>openViewer(photo)
 const quote=document.createElement("div")
 quote.className="quote"
 quote.innerText=quotes[i % quotes.length]
@@ -179,7 +210,18 @@ card.appendChild(quote)
 gallery.appendChild(card)
 
 })
-</script>
+const viewer=document.getElementById("viewer")
+const viewerImg=document.getElementById("viewerImg")
+
+function openViewer(src){
+viewer.style.display="flex"
+viewerImg.src=src
+}
+
+function closeViewer(){
+viewer.style.display="none"
+}
+  </script>
 
 </body>
 </html>
