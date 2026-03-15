@@ -56,37 +56,47 @@ padding-bottom:80px;
     flex-direction: column;
     border-radius: 15px;
     overflow: hidden;
-    background: #16213e; /* Matches your theme background */
 }
 
 .gallery img {
     width: 100%;
     height: auto;
     display: block;
-    border-radius: 15px 15px 0 0; /* Rounds only the top corners */
+    border-radius: 15px;
     transition: 0.4s;
     cursor: pointer;
 }
 
 .quote {
-    /* Changed to relative to stick naturally below the image pixels */
-    position: relative; 
-    margin-top: -60px; /* Pulls the quote UP to overlay the bottom of the image */
-    margin-bottom: 10px;
+    position: relative; /* Sticks to the flow */
+    margin-top: -70px; /* Pulls the box up onto the photo */
+    margin-bottom: 20px;
     margin-left: auto;
     margin-right: auto;
-    
-    /* Styling to match your reference photo */
-    width: 85%;
-    background: rgba(0, 0, 0, 0.6); 
-    backdrop-filter: blur(8px);
+    width: 80%; /* Matches your reference photo width */
+    background: rgba(0, 0, 0, 0.55); /* Semi-transparent dark overlay */
+    backdrop-filter: blur(6px); /* Modern glass effect */
     color: white;
-    padding: 12px;
+    padding: 10px 15px;
     border-radius: 12px;
     font-size: 14px;
     text-align: center;
+    line-height: 1.4;
     z-index: 2;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    pointer-events: none; /* Let clicks pass through to the image */
+}
+
+/* Enhancing the counter look */
+#counter {
+    font-size: 26px;
+    font-weight: 300;
+    margin-top: 20px;
+    letter-spacing: 1px;
+}
+
+#counter b {
+    color: #ff4d6d; /* Makes the numbers pop */
+    font-weight: 600;
 }
 .viewer{
 position:fixed;
@@ -281,27 +291,28 @@ h1{
 
 const startDate = new Date("2023-09-07")
 
-function updateCounter(){
+function updateCounter() {
+    const now = new Date();
+    const diff = now - startDate;
 
-const now = new Date()
+    // Calculations for days, hours, minutes, and the new SECONDS
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const minutes = Math.floor((diff / (1000 * 60)) % 60);
+    const seconds = Math.floor((diff / 1000) % 60); 
 
-const diff = now - startDate
-
-const days = Math.floor(diff/(1000*60*60*24))
-
-const hours = Math.floor(diff/(1000*60*60)) % 24
-
-const minutes = Math.floor(diff/(1000*60)) % 60
-
-document.getElementById("counter").innerHTML =
-"We have been together for <b>" +
-days + " days, " +
-hours + " hours, and " +
-minutes + " minutes ❤️</b>";
-
+    // This updates the text on your screen every second
+    document.getElementById("counter").innerHTML =
+        "We have been together for <br><b>" +
+        days + " days, " +
+        hours + " hours, " +
+        minutes + " minutes, and " +
+        seconds + " seconds ❤️</b>";
 }
 
-setInterval(updateCounter,1000)
+// This makes the clock "tick" every 1000 milliseconds (1 second)
+setInterval(updateCounter, 1000);
+updateCounter();
 
 updateCounter()
 
