@@ -9,8 +9,8 @@
 body{
 margin:0;
 font-family: 'Segoe UI', sans-serif;
-background: linear-gradient(135deg,#f0f0f0,#d0d0d0);
-color: #222;
+background: linear-gradient(135deg,#1a1a2e,#16213e,#0f3460);
+color:white;
 text-align:center;
 overflow-x:hidden;
 }
@@ -66,14 +66,19 @@ transform:scale(1.05);
 }
 
 .quote{
-position:absolute;
-bottom:15px;
-left:15px;
-right:15px;
-background:rgba(0,0,0,0.5);
-padding:10px;
-border-radius:10px;
-font-size:14px;
+  position:absolute;
+  color:white;
+  font-size:18px;
+  max-width:220px;
+  padding:10px 14px;
+  border-radius:12px;
+
+  background: rgba(0,0,0,0.35);   /* soft glass background */
+  backdrop-filter: blur(6px);
+
+  text-shadow: 0 0 10px rgba(0,0,0,0.7);
+
+  animation: floatQuote 6s ease-in-out infinite;
 }
 .viewer{
 position:fixed;
@@ -177,6 +182,11 @@ top:0;
 0%{transform:translateY(0) rotate(45deg);opacity:0.8;}
 50%{opacity:0.6;}
 100%{transform:translateY(-600px) rotate(45deg);opacity:0;}
+}
+@keyframes floatQuote{
+  0%{ transform: translateY(0px); }
+  50%{ transform: translateY(-10px); }
+  100%{ transform: translateY(0px); }
 }
 </style>
 
