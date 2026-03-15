@@ -64,21 +64,15 @@ transition:0.4s;
 .gallery img:hover{
 transform:scale(1.05);
 }
-
+.gallery img{
+  position:relative;
+  z-index:1;
+}
 .quote{
-  position:absolute;
-  color:white;
-  font-size:18px;
-  max-width:220px;
-  padding:10px 14px;
-  border-radius:12px;
-
-  background: rgba(0,0,0,0.35);   /* soft glass background */
-  backdrop-filter: blur(6px);
-
-  text-shadow: 0 0 10px rgba(0,0,0,0.7);
-
-  animation: floatQuote 6s ease-in-out infinite;
+  background:rgba(0,0,0,0.35);
+  padding:8px 12px;
+  border-radius:10px;
+  backdrop-filter:blur(5px);
 }
 .viewer{
 position:fixed;
