@@ -102,6 +102,23 @@ font-size:40px;
 cursor:pointer;
 color:white;
 }
+.video-section{
+padding:80px 20px;
+}
+
+.videos{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+gap:30px;
+width:90%;
+margin:auto;
+}
+
+video{
+width:100%;
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.6);
+}
 </style>
 
 </head>
@@ -126,6 +143,35 @@ color:white;
 <span class="close" onclick="closeViewer()">×</span>
 <img id="viewerImg">
 </div>
+<div class="video-section">
+
+<h2>Our Special Moments</h2>
+
+<div class="videos">
+
+<video controls>
+<source src="videos/video1.mp4" type="video/mp4">
+</video>
+
+<video controls>
+<source src="videos/video2.mp4" type="video/mp4">
+</video>
+
+<video controls>
+<source src="videos/video3.mp4" type="video/mp4">
+</video>
+
+<video controls>
+<source src="videos/video4.mp4" type="video/mp4">
+</video>
+
+<video controls>
+<source src="videos/video5.mp4" type="video/mp4">
+</video>
+
+</div>
+
+</div> 
   <script>
 
 const startDate = new Date("2023-09-07")
